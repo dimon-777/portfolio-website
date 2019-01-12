@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Sedoy Dmitriy - Portfolio</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma/css/bulma.min.css">
+		<style>
+		body {
+			font-family: Consolas, monospace !important;
+			padding-bottom: 10px;
+		}
+		.image.is-centered {
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		.image.is-200x200 {
+			height: 200px;
+			width: 200px;
+		}
+		.hero {
+			background-image: url('./bg.jpg');
+			background-size: 500px 500px;
+		}
+		#console {
+			height: 400px;
+			overflow: overlay;
+		}
+		#filter {
+			opacity: 0.4;
+		}
+		</style>
+	</head>
+	<body class="hero is-fullheight">
+		<div id="filter" class="has-background-black is-overlay"></div>
+		<div class="hero-body">
+			<div class="container">
+				<figure class="image is-200x200 is-centered">
+					<img class="is-rounded" src="./avatar.jpg">
+				</figure>
+				<br>
+				<div id="console" class="box has-background-dark has-text-light is-radiusless"></div>
+			</div>
+		</div>
+		<div class="hero-footer">
+			<div class="container has-text-right">
+				<span class="tag is-dark is-radiusless">© 2019 Sedoy Dmitriy. All rights reserved</span>
+			</div>
+		</div>
+		<script>
+			document.addEventListener('DOMContentLoaded', function() {
+				'use strict';
+
+				var app = {
+					constants: {
+						tabSize: 11
+					},
+					elements: {
+						console: document.getElementById('console'),
+						buttons: {}
+					},
+					functions: {
+						insertSpaces: function(times) {
+							var span = document.createElement('span');
+							span.innerHTML = '&emsp;'.repeat(times);
+							return span;
+						},
+						insertText: function(text) {
+							var span;
+							span = document.createElement('span');
+							span.textContent = 'dmitriy@localhost: ';
+							span.className = 'has-text-success';
+							app.elements.console.appendChild(span);
+							app.elements.console.appendChild(document.createTextNode(text));
+							app.elements.console.appendChild(document.createElement('br'));
+						},
+						insertKeyValue: function(key, value) {
+							app.elements.console.appendChild(app.functions.insertSpaces(19));
+							app.elements.console.appendChild(document.createTextNode(key));
+							app.elements.console.appendChild(app.functions.insertSpaces(app.constants.tabSize - key.length));
+							if (typeof(value) === 'number') {
+								app.elements.console.appendChild(document.createTextNode('['.concat('#'.repeat(value))));
+								app.elements.console.appendChild(app.functions.insertSpaces(app.constants.tabSize - value));
+								app.elements.console.appendChild(document.createTextNode(']'));
+							} else if (typeof(value) === 'string') {
+								app.elements.console.appendChild(document.createTextNode(value));
+							}
+							app.elements.console.appendChild(document.createElement('br'));
+						}
+					}
+				};
+
+				app.functions.insertText('Hey, I\'m Dmitriy. Please, choose the command:');
+
+				var whoami = document.createElement('a');
+						whoami.id = whoami.textContent = 'whoami';
+						whoami.href = 'javascript:';
+						whoami.classList = 'has-text-success';
+				var skills = document.createElement('a');
+						skills.id = skills.textContent = 'skills';
+						skills.href = 'javascript:';
+						skills.classList = 'has-text-success';
+				var projects = document.createElement('a');
+						projects.id = projects.textContent = 'projects';
+						projects.href = 'javascript:';
+						projects.classList = 'has-text-success';
+				var socials = document.createElement('a');
+						socials.id = socials.textContent = 'socials';
+						socials.href = 'javascript:';
+						socials.classList = 'has-text-success';
+
+				app.elements.console.appendChild(app.functions.insertSpaces(19));
+				app.elements.console.appendChild(whoami);
+				app.elements.console.appendChild(app.functions.insertSpaces(2));
+				app.elements.console.appendChild(skills);
+				app.elements.console.appendChild(app.functions.insertSpaces(2));
+				app.elements.console.appendChild(projects);
+				app.elements.console.appendChild(app.functions.insertSpaces(2));
+				app.elements.console.appendChild(socials);
+				app.elements.console.appendChild(document.createElement('br'));
+
+				app.elements.buttons.whoami = document.getElementById('whoami');
+				app.elements.buttons.skills = document.getElementById('skills');
+				app.elements.buttons.projects = document.getElementById('projects');
+				app.elements.buttons.socials = document.getElementById('socials');
+				
+				app.elements.buttons.whoami.addEventListener('click', function() {
+					app.functions.insertText('whoami');
+					app.functions.insertText('My name is Sedoy Dmitriy and I\'m a Full Stack Web Developer. Was born in 1985, now live in Hallandale, FL.');
+					app.elements.console.scrollTo(0, app.elements.console.scrollHeight);
+				});
+
+				app.elements.buttons.skills.addEventListener('click', function() {
+					app.functions.insertText('skills');
+					app.functions.insertText('My skills:');
+					app.functions.insertKeyValue('HTML', 8);
+					app.functions.insertKeyValue('CSS', 7);
+					app.functions.insertKeyValue('JS', 6);
+					app.functions.insertKeyValue('Ruby', 5);
+					app.functions.insertKeyValue('Node', 6);
+					app.functions.insertKeyValue('React', 6);
+					app.functions.insertKeyValue('RoR', 5);
+					app.functions.insertKeyValue('SQL', 5);
+					app.elements.console.scrollTo(0, app.elements.console.scrollHeight);
+				});
+
+				app.elements.buttons.projects.addEventListener('click', function() {
+					app.functions.insertText('projects');
+					app.functions.insertText('My projects:');
+					app.functions.insertKeyValue('BookApp', 'Blah-blah');
+					app.elements.console.scrollTo(0, app.elements.console.scrollHeight);
+				});
+
+				app.elements.buttons.socials.addEventListener('click', function() {
+					app.functions.insertText('socials');
+					app.functions.insertText('Me on socials:');
+					app.functions.insertKeyValue('GitHub', '@dimon-777');
+					app.functions.insertKeyValue('LinkedIn', '@dmitriysedoy');
+					app.elements.console.scrollTo(0, app.elements.console.scrollHeight);
+				});
+			});
+		</script>
+	</body>
+</html>
