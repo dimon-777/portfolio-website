@@ -6,9 +6,15 @@
 		<title>Sedoy Dmitriy - Portfolio</title>
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma/css/bulma.min.css">
 		<style>
+		html, body {
+			height: 100%;
+		}
 		body {
 			font-family: Consolas, monospace !important;
 			padding-bottom: 10px;
+			padding-top: 10px;
+			background-image: url('./bg.jpg');
+			background-size: 400px 400px !important;
 		}
 		.image.is-centered {
 			display: block;
@@ -19,32 +25,25 @@
 			height: 200px;
 			width: 200px;
 		}
-		.hero {
-			background-image: url('./bg.jpg');
-			background-size: 500px 500px;
-		}
 		#console {
 			height: 400px;
 			overflow: overlay;
+			margin-bottom: 50px;
+			margin-top: 50px;
 		}
 		#filter {
 			opacity: 0.4;
 		}
 		</style>
 	</head>
-	<body class="hero is-fullheight">
+	<body>
 		<div id="filter" class="has-background-black is-overlay"></div>
-		<div class="hero-body">
-			<div class="container">
-				<figure class="image is-200x200 is-centered">
-					<img class="is-rounded" src="./avatar.jpg">
-				</figure>
-				<br>
-				<div id="console" class="box has-background-dark has-text-light is-radiusless"></div>
-			</div>
-		</div>
-		<div class="hero-footer">
-			<div class="container has-text-right">
+		<div class="container">
+			<figure class="image is-200x200 is-centered">
+				<img class="is-rounded" src="./avatar.jpg">
+			</figure>
+			<div id="console" class="box has-background-dark has-text-light is-radiusless"></div>
+			<div class="has-text-right">
 				<span class="tag is-dark is-radiusless">© 2019 Sedoy Dmitriy. All rights reserved</span>
 			</div>
 		</div>
